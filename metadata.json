@@ -1,0 +1,6 @@
+{
+  "name": "พยาบาล 101",
+  "description": "คู่มือปฐมพยาบาลเบื้องต้นและขั้นตอนปฏิบัติสำหรับทีมพยาบาลสตาฟ CU First Date 2026 - โหลดง่าย ประหยัดเน็ต",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
