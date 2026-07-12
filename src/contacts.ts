@@ -1,28 +1,10 @@
+import contactsJson from './contacts.json';
+
 export interface Contact {
   name: string;
   phone: string;
   description: string;
 }
 
-export const contactsData: Contact[] = [
-  {
-    name: "พี่เจ้าหน้าที่พยาบาลวิชาชีพ (เบอร์ 1)",
-    phone: "081-234-5678",
-    description: "กรณีอุบัติเหตุรุนแรง ชัก หมดสติ"
-  },
-  {
-    name: "พี่เจ้าหน้าที่พยาบาลวิชาชีพ (เบอร์ 2)",
-    phone: "089-876-5432",
-    description: "สายสำรอง/ประสานงานส่งต่อ"
-  },
-  {
-    name: "วิทยุประสานงาน (ปุน #4)",
-    phone: "082-345-6789",
-    description: "VR ช่อง 4 หรือโทรด่วน"
-  },
-  {
-    name: "สายด่วนสภากาชาดไทย",
-    phone: "1669",
-    description: "เรียกรถพยาบาลฉุกเฉินระดับประเทศ"
-  }
-];
+export const contactsData: Contact[] = contactsJson;
+
