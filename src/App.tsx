@@ -3,6 +3,7 @@ import Header from './components/Header';
 import InteractiveMap from './components/InteractiveMap';
 import ReportingGuide from './components/ReportingGuide';
 import MedicalGuideSection from './components/MedicalGuideSection';
+import IncidentLogger from './components/IncidentLogger';
 import { RiceDiagram, HeatstrokeDiagram } from './components/AestheticDiagrams';
 import { contactsData } from './contacts';
 import { 
@@ -11,7 +12,7 @@ import {
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
-type TabId = 'guides' | 'schedule' | 'report' | 'diagrams' | 'contacts';
+type TabId = 'guides' | 'schedule' | 'report' | 'record' | 'diagrams' | 'contacts';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<TabId>('guides');
@@ -23,6 +24,7 @@ export default function App() {
     { id: 'guides', label: 'คู่มือ 18 อาการ', icon: BookOpen, count: 18 },
     { id: 'schedule', label: 'ตารางเวร & จุดสตาฟ', icon: MapPin },
     { id: 'report', label: 'วิทยุสื่อสาร & แจ้งเหตุ', icon: Radio },
+    { id: 'record', label: 'บันทึกเคส & การใช้ยา', icon: FileText },
     { id: 'diagrams', label: 'ภาพประกอบรักษา', icon: HeartHandshake },
     { id: 'contacts', label: 'เบอร์ติดต่อด่วน', icon: Phone },
   ] as const;
@@ -185,6 +187,11 @@ export default function App() {
                 {/* 3. Reporting protocol tab */}
                 {activeTab === 'report' && (
                   <ReportingGuide />
+                )}
+
+                {/* 3.5. Record case / Medicine Usage tab */}
+                {activeTab === 'record' && (
+                  <IncidentLogger />
                 )}
 
                 {/* 4. Diagrams tab */}
