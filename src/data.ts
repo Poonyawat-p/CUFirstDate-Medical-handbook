@@ -7,7 +7,6 @@ export const nurseShifts: Shift[] = [
     leadsAndMembers: [
       { name: 'โมเดล#3', isHead: true },
       { name: 'ไอติม#2', isHead: false },
-      { name: 'ปันปัน#4', isHead: false },
       { name: 'โบนัส#2', isHead: false },
       { name: 'นาวิน#2', isHead: false },
     ]
@@ -31,16 +30,8 @@ export const nurseShifts: Shift[] = [
       { name: 'ไอวี่#3', isHead: false },
       { name: 'อิ๊ง#2', isHead: false },
       { name: 'กาย#2', isHead: false },
-    ]
-  },
-  {
-    time: 'เช้า 08:00 - 12:00',
-    location: 'บ่อน้ำลานจอด (ชุดที่ 2)',
-    leadsAndMembers: [
-      { name: 'ขิม#4', isHead: true },
-      { name: 'จี๋#2', isHead: false },
-      { name: 'แตงกวา#2', isHead: false },
-      { name: 'โกะ#2', isHead: false },
+      { name: 'ปันปัน#4', isHead: false },
+      { name: 'เอมมี่#4', isHead: false },
     ]
   },
   {
@@ -48,9 +39,13 @@ export const nurseShifts: Shift[] = [
     location: 'หอประชุม (วิศวะ)',
     leadsAndMembers: [
       { name: 'ปิงลี่#3', isHead: true },
+      { name: 'ขิม#4', isHead: true },
       { name: 'บิว#3', isHead: false },
       { name: 'อาร์#2', isHead: false },
       { name: 'หนูนิ#2', isHead: false },
+      { name: 'จี๋#2', isHead: false },
+      { name: 'แตงกวา#2', isHead: false },
+      { name: 'โกะ#2', isHead: false },
     ]
   },
   {

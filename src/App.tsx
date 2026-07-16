@@ -8,7 +8,7 @@ import { RiceDiagram, HeatstrokeDiagram } from './components/AestheticDiagrams';
 import { contactsData } from './contacts';
 import { 
   LayoutGrid, MapPin, Radio, ShieldAlert, BookOpen, HeartHandshake, 
-  Phone, PhoneCall, Download, FileText, ChevronRight 
+  Phone, PhoneCall, Download, FileText, ChevronRight, Users 
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
@@ -251,6 +251,84 @@ export default function App() {
                           </a>
                         </div>
                       ))}
+                    </div>
+
+                    {/* Official Duty Table from Image */}
+                    <div className="pt-6 border-t border-slate-200 space-y-4">
+                      <div>
+                        <h3 className="text-sm font-black text-slate-900 flex items-center gap-2 uppercase tracking-tight">
+                          <Users className="w-4.5 h-4.5 text-blue-600" />
+                          ตารางเวรเจ้าหน้าที่พยาบาลวิชาชีพและพนักงานขับรถพยาบาล (Official)
+                        </h3>
+                        <p className="text-[11px] text-slate-500 mt-0.5 font-medium">
+                          ข้อมูลจัดตั้งเวรประจำตำแหน่งงานภายนอก (โรงพยาบาลจุฬาลงกรณ์ / สภากาชาดไทย) วันที่ 18 ก.ค. 2569 (CU First Date 2026)
+                        </p>
+                      </div>
+
+                      <div className="overflow-x-auto border border-slate-200 rounded-lg shadow-sm">
+                        <table className="w-full text-left text-xs border-collapse">
+                          <thead>
+                            <tr className="bg-slate-100 text-slate-700 font-extrabold border-b border-slate-200">
+                              <th className="py-2.5 px-3 border-r border-slate-200">วัน/เดือน/ปี เวลา</th>
+                              <th className="py-2.5 px-3 border-r border-slate-200">กิจกรรม</th>
+                              <th className="py-2.5 px-3 border-r border-slate-200">ผู้ปฏิบัติงานหลัก</th>
+                              <th className="py-2.5 px-3">สถานที่ปฏิบัติงาน</th>
+                            </tr>
+                          </thead>
+                          <tbody className="divide-y divide-slate-200 font-medium text-slate-700">
+                            <tr className="hover:bg-slate-50/50">
+                              <td className="py-3 px-3 align-middle border-r border-slate-200 whitespace-nowrap bg-slate-50/30">
+                                <span className="font-bold text-slate-900">18 ก.ค. 69</span>
+                                <div className="text-[10px] text-slate-500 mt-0.5">08:00 - 12:00 น.</div>
+                              </td>
+                              <td className="py-3 px-3 align-middle border-r border-slate-200 font-bold text-slate-900">CU First Date 2026</td>
+                              <td className="py-3 px-3 align-middle border-r border-slate-200 space-y-1.5">
+                                <div className="flex items-center gap-2">
+                                  <span className="px-1.5 py-0.5 bg-red-50 text-red-700 text-[9px] font-black rounded border border-red-100">RN</span>
+                                  <span className="font-bold">ลลิตา อุตมวาทิน</span>
+                                  <a href="tel:0623955397" className="text-blue-600 hover:underline font-mono ml-auto bg-blue-50/50 px-2 py-0.5 rounded text-[10px] font-bold">062-3955397</a>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                  <span className="px-1.5 py-0.5 bg-amber-50 text-amber-700 text-[9px] font-black rounded border border-amber-100">PN</span>
+                                  <span className="font-bold">ปาณิสรา ราชพิบูลย์</span>
+                                  <a href="tel:0845935462" className="text-blue-600 hover:underline font-mono ml-auto bg-blue-50/50 px-2 py-0.5 rounded text-[10px] font-bold">084-5935462</a>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                  <span className="px-1.5 py-0.5 bg-slate-100 text-slate-700 text-[9px] font-black rounded border border-slate-200">Amb</span>
+                                  <span className="font-bold">ชัยวัฒน์ น้อยแสม</span>
+                                  <a href="tel:0923347897" className="text-blue-600 hover:underline font-mono ml-auto bg-blue-50/50 px-2 py-0.5 rounded text-[10px] font-bold">092-3347897</a>
+                                </div>
+                              </td>
+                              <td className="py-3 px-3 align-middle font-bold text-slate-900 bg-slate-50/30">ลาน 2 รัชกาล</td>
+                            </tr>
+                            <tr className="hover:bg-slate-50/50">
+                              <td className="py-3 px-3 align-middle border-r border-slate-200 whitespace-nowrap bg-slate-50/30">
+                                <span className="font-bold text-slate-900">18 ก.ค. 69</span>
+                                <div className="text-[10px] text-slate-500 mt-0.5">08:00 - 20:00 น.</div>
+                              </td>
+                              <td className="py-3 px-3 align-middle border-r border-slate-200 font-bold text-slate-900">CU First Date 2026</td>
+                              <td className="py-3 px-3 align-middle border-r border-slate-200 space-y-1.5">
+                                <div className="flex items-center gap-2">
+                                  <span className="px-1.5 py-0.5 bg-red-50 text-red-700 text-[9px] font-black rounded border border-red-100">RN</span>
+                                  <span className="font-bold">ชมัยพร สุทธินันสนีย์</span>
+                                  <a href="tel:0988908241" className="text-blue-600 hover:underline font-mono ml-auto bg-blue-50/50 px-2 py-0.5 rounded text-[10px] font-bold">098-8908241</a>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                  <span className="px-1.5 py-0.5 bg-amber-50 text-amber-700 text-[9px] font-black rounded border border-amber-100">PN</span>
+                                  <span className="font-bold">ประภาพร สิทธิอมร</span>
+                                  <a href="tel:0649268586" className="text-blue-600 hover:underline font-mono ml-auto bg-blue-50/50 px-2 py-0.5 rounded text-[10px] font-bold">064-9268586</a>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                  <span className="px-1.5 py-0.5 bg-slate-100 text-slate-700 text-[9px] font-black rounded border border-slate-200">Amb</span>
+                                  <span className="font-bold">ไพโรจน์ แก้วมนูญ</span>
+                                  <a href="tel:0877618098" className="text-blue-600 hover:underline font-mono ml-auto bg-blue-50/50 px-2 py-0.5 rounded text-[10px] font-bold">087-7618098</a>
+                                </div>
+                              </td>
+                              <td className="py-3 px-3 align-middle font-bold text-slate-900 bg-slate-50/30">หอประชุมจุฬาฯ</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
                     </div>
 
                     {/* Quick advice for coordinators */}

@@ -200,39 +200,62 @@ export default function InteractiveMap({ onLocationSelect, selectedLocation }: I
       ) : (
         /* Full schedule table list formatted to use minimal bytes and screen estate */
         <div className="overflow-x-auto">
-          <table className="w-full text-left text-xs border-collapse">
+          <table className="w-full text-left text-xs border-collapse border border-slate-200 rounded-lg overflow-hidden">
             <thead>
-              <tr className="border-b border-slate-200 text-slate-400 font-bold uppercase">
-                <th className="py-3 px-2">ช่วงเวลา</th>
-                <th className="py-3 px-2">จุดประจำการ</th>
-                <th className="py-3 px-2">หัวหน้ากะ (Head)</th>
-                <th className="py-3 px-2">สตาฟพยาบาลร่วมเวร</th>
+              <tr className="bg-slate-100 border-b border-slate-200 text-slate-700 font-extrabold uppercase">
+                <th className="py-3 px-3 border-r border-slate-200">ช่วงเวลา</th>
+                <th className="py-3 px-3 border-r border-slate-200">จุดประจำการ</th>
+                <th className="py-3 px-3 border-r border-slate-200">หัวหน้ากะ (Head)</th>
+                <th className="py-3 px-3">สตาฟพยาบาลร่วมเวร</th>
               </tr>
             </thead>
             <tbody>
               {nurseShifts.map((shift, idx) => {
-                const head = shift.leadsAndMembers.find(m => m.isHead)?.name || '-';
+                // Find how many consecutive shifts have the same time
+                let rowSpan = 1;
+                let isFirstOfGroup = true;
+                
+                if (idx > 0 && nurseShifts[idx - 1].time === shift.time) {
+                  isFirstOfGroup = false;
+                } else {
+                  let nextIdx = idx + 1;
+                  while (nextIdx < nurseShifts.length && nurseShifts[nextIdx].time === shift.time) {
+                    rowSpan++;
+                    nextIdx++;
+                  }
+                }
+
+                const heads = shift.leadsAndMembers.filter(m => m.isHead).map(m => m.name).join(', ') || '-';
                 const members = shift.leadsAndMembers.filter(m => !m.isHead).map(m => m.name).join(', ');
                 return (
                   <tr
                     key={idx}
                     onClick={() => handleLocationClick(shift.location)}
-                    className={`border-b border-slate-100 hover:bg-slate-50/50 cursor-pointer transition-all ${
+                    className={`border-b border-slate-200 hover:bg-slate-50/50 cursor-pointer transition-all ${
                       selectedLocation === shift.location ? 'bg-blue-50/40' : ''
                     }`}
                   >
-                    <td className="py-3 px-2 font-semibold text-slate-900">{shift.time}</td>
-                    <td className="py-3 px-2 text-slate-600 flex items-center gap-1">
-                      <MapPin className="w-3 h-3 text-blue-500" />
-                      {shift.location}
+                    {isFirstOfGroup && (
+                      <td 
+                        rowSpan={rowSpan} 
+                        className="py-3 px-3 font-bold text-slate-800 border-r border-slate-200 bg-slate-50/50 text-center align-middle"
+                      >
+                        {shift.time}
+                      </td>
+                    )}
+                    <td className="py-3 px-3 text-slate-700 border-r border-slate-200 font-semibold">
+                      <div className="flex items-center gap-1.5">
+                        <MapPin className="w-3.5 h-3.5 text-blue-500 flex-shrink-0" />
+                        <span>{shift.location}</span>
+                      </div>
                     </td>
-                    <td className="py-3 px-2">
-                      <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md bg-blue-50 text-blue-700 font-bold border border-blue-100">
+                    <td className="py-3 px-3 border-r border-slate-200">
+                      <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-blue-50 text-blue-700 font-bold border border-blue-100">
                         <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
-                        {head}
+                        {heads}
                       </span>
                     </td>
-                    <td className="py-3 px-2 text-slate-500">{members}</td>
+                    <td className="py-3 px-3 text-slate-600 font-medium">{members}</td>
                   </tr>
                 );
               })}

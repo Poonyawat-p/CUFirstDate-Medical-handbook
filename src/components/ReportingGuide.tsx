@@ -1,6 +1,19 @@
+import { useState, useEffect } from 'react';
 import { ShieldAlert, Radio, Phone, MapPin } from 'lucide-react';
 
 export default function ReportingGuide() {
+  const [isPastAfternoonShift, setIsPastAfternoonShift] = useState(false);
+
+  useEffect(() => {
+    const checkTime = () => {
+      // Target time: 18 July 2026, 13:00:00 ICT (Thailand time)
+      const targetTime = new Date('2026-07-18T13:00:00+07:00');
+      setIsPastAfternoonShift(new Date() >= targetTime);
+    };
+    checkTime();
+    const interval = setInterval(checkTime, 60000);
+    return () => clearInterval(interval);
+  }, []);
   return (
     <div id="reporting-guide-flowchart" className="bg-white border border-slate-200 rounded-lg p-4 md:p-6 shadow-sm space-y-6">
       <div className="border-b border-slate-200 pb-4">
@@ -99,7 +112,7 @@ export default function ReportingGuide() {
                   className="inline-flex items-center justify-center gap-1.5 px-4 py-2.5 bg-amber-500 hover:bg-amber-600 active:scale-95 text-white font-mono font-bold rounded-lg text-xs shadow-sm transition-all"
                 >
                   <Phone className="w-3.5 h-3.5" />
-                  <span>โทรแจ้ง ปุน#4</span>
+                  <span>โทรแจ้ง ปุญ#4</span>
                 </a>
               </div>
             </div>
@@ -124,19 +137,44 @@ export default function ReportingGuide() {
               </div>
               
               <div className="flex-shrink-0 flex flex-col sm:flex-row xl:flex-col gap-2 justify-center">
+                <div className="text-[10px] font-black text-red-700 xl:text-center uppercase tracking-wider mb-1">
+                  ☎️ พยาบาลวิชาชีพ (RN) {isPastAfternoonShift && <span className="text-slate-400 font-normal">(เวรบ่าย-ค่ำ)</span>}
+                </div>
+                {!isPastAfternoonShift && (
+                  <a
+                    href="tel:062-395-5397"
+                    className="inline-flex items-center justify-center gap-1.5 px-4 py-2.5 bg-red-600 hover:bg-red-700 active:scale-95 text-white font-mono font-bold rounded-lg text-xs shadow-sm transition-all"
+                  >
+                    <Phone className="w-3.5 h-3.5" />
+                    <span>โทรพี่ลลิตา (062-395-5397)</span>
+                  </a>
+                )}
                 <a
-                  href="tel:081-234-5678"
+                  href="tel:098-890-8241"
                   className="inline-flex items-center justify-center gap-1.5 px-4 py-2.5 bg-red-600 hover:bg-red-700 active:scale-95 text-white font-mono font-bold rounded-lg text-xs shadow-sm transition-all"
                 >
                   <Phone className="w-3.5 h-3.5" />
-                  <span>โทรพี่พยาบาล (เบอร์ 1)</span>
+                  <span>โทรพี่ชมัยพร (098-890-8241)</span>
                 </a>
+
+                <div className="text-[10px] font-black text-amber-700 xl:text-center uppercase tracking-wider mt-2 mb-1">
+                  ☎️ ผู้ช่วยพยาบาล (PN) {isPastAfternoonShift && <span className="text-slate-400 font-normal">(เวรบ่าย-ค่ำ)</span>}
+                </div>
+                {!isPastAfternoonShift && (
+                  <a
+                    href="tel:084-593-5462"
+                    className="inline-flex items-center justify-center gap-1.5 px-4 py-2 bg-amber-600 hover:bg-amber-700 active:scale-95 text-white font-mono font-bold rounded-lg text-xs shadow-sm transition-all"
+                  >
+                    <Phone className="w-3.5 h-3.5" />
+                    <span>โทรผู้ช่วยฯ ปาณิสรา (084-593-5462)</span>
+                  </a>
+                )}
                 <a
-                  href="tel:089-876-5432"
-                  className="inline-flex items-center justify-center gap-1.5 px-4 py-2.5 bg-red-500 hover:bg-red-600 active:scale-95 text-white font-mono font-bold rounded-lg text-xs shadow-sm transition-all"
+                  href="tel:064-926-8586"
+                  className="inline-flex items-center justify-center gap-1.5 px-4 py-2 bg-amber-600 hover:bg-amber-700 active:scale-95 text-white font-mono font-bold rounded-lg text-xs shadow-sm transition-all"
                 >
                   <Phone className="w-3.5 h-3.5" />
-                  <span>โทรพี่พยาบาล (เบอร์ 2)</span>
+                  <span>โทรผู้ช่วยฯ ประภาพร (064-926-8586)</span>
                 </a>
               </div>
             </div>

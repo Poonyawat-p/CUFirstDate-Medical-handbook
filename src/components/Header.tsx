@@ -1,9 +1,30 @@
+import { useState, useEffect } from 'react';
 import { ShieldAlert, PhoneCall, BookOpen, Download, Phone } from 'lucide-react';
 import { contactsData } from '../contacts';
 
 export default function Header() {
-  // Take first 3 contacts for quick access in header
-  const quickContacts = contactsData.slice(0, 3);
+  const [isPastAfternoonShift, setIsPastAfternoonShift] = useState(false);
+
+  useEffect(() => {
+    const checkTime = () => {
+      // Target time: 18 July 2026, 13:00:00 ICT (Thailand time)
+      const targetTime = new Date('2026-07-18T13:00:00+07:00');
+      setIsPastAfternoonShift(new Date() >= targetTime);
+    };
+    checkTime();
+    const interval = setInterval(checkTime, 60000);
+    return () => clearInterval(interval);
+  }, []);
+
+  // Take first 4 contacts (2 RNs + 2 PNs), and filter out morning shift (08:00 - 12:00) if current time is past 13:00 of 18/07/2026
+  const quickContacts = contactsData.slice(0, 4).filter(contact => {
+    if (isPastAfternoonShift) {
+      return !contact.description.includes('08:00 - 12:00');
+    }
+    return true;
+  });
+
+  const punContact = contactsData.find(c => c.name.includes('ปุญ'));
 
   return (
     <header className="bg-white text-slate-800 border-l-4 border-blue-600 border-t border-r border-b border-slate-200 rounded-lg p-6 relative overflow-hidden shadow-sm">
@@ -55,6 +76,27 @@ export default function Header() {
                 </a>
               </div>
             ))}
+
+            {punContact && (
+              <div className="pt-2 border-t border-slate-200 flex justify-between items-center text-xs gap-3">
+                <div className="min-w-0">
+                  <span className="text-blue-950 font-extrabold block truncate flex items-center gap-1">
+                    <span className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse" />
+                    {punContact.name}
+                  </span>
+                  <span className="text-[10px] text-blue-600 font-semibold block truncate">
+                    {punContact.description}
+                  </span>
+                </div>
+                <a 
+                  href={`tel:${punContact.phone}`}
+                  className="flex items-center gap-1 px-2.5 py-1 rounded bg-blue-100 text-blue-700 font-mono font-bold hover:bg-blue-200 border border-blue-200 transition-all flex-shrink-0 text-[11px]"
+                >
+                  <Phone className="w-3 h-3 text-blue-600" />
+                  {punContact.phone}
+                </a>
+              </div>
+            )}
           </div>
         </div>
       </div>
