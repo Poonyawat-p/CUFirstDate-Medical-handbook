@@ -15,19 +15,16 @@ export default function InteractiveMap({ onLocationSelect, selectedLocation }: I
     { id: 'จุดอำนวยการลานบรม', name: 'ลานบรม (จุดอำนวยการ)', x: 120, y: 150, color: 'bg-emerald-500' },
     { id: 'จุดลงทะเบียน', name: 'จุดลงทะเบียน', x: 280, y: 80, color: 'bg-amber-500' },
     { id: 'บ่อน้ำลานจอด', name: 'บ่อน้ำลานจอด', x: 220, y: 220, color: 'bg-sky-500' },
+    { id: 'หอประชุม (สถาปัตย์)', name: 'หอประชุม (สถาปัตย์)', x: 150, y: 280, color: 'bg-teal-500' },
     { id: 'หอประชุม (วิศวะ)', name: 'หอประชุม (วิศวะ)', x: 80, y: 280, color: 'bg-indigo-500' },
     { id: 'หอประชุม (อักษร)', name: 'หอประชุม (อักษร)', x: 340, y: 240, color: 'bg-purple-500' },
+    { id: 'นอกหอประชุม', name: 'นอกหอประชุม', x: 240, y: 160, color: 'bg-orange-500' },
     { id: 'สวนร้อยปี', name: 'สวนร้อยปี', x: 200, y: 340, color: 'bg-rose-500' },
   ];
 
   const handleLocationClick = (locId: string) => {
-    // Normalize or match location id
-    let targetLoc = locId;
-    if (locId === 'บ่อน้ำลานจอด') {
-      targetLoc = 'บ่อน้ำลานจอด (ชุดที่ 1)';
-    }
     if (onLocationSelect) {
-      onLocationSelect(targetLoc);
+      onLocationSelect(locId);
     }
   };
 

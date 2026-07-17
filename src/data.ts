@@ -24,11 +24,11 @@ export const nurseShifts: Shift[] = [
   },
   {
     time: 'เช้า 08:00 - 12:00',
-    location: 'บ่อน้ำลานจอด (ชุดที่ 1)',
+    location: 'บ่อน้ำลานจอด',
     leadsAndMembers: [
       { name: 'ฟิน#3', isHead: true },
       { name: 'ไอวี่#3', isHead: false },
-      { name: 'อิ๊ง#2', isHead: false },
+      { name: 'อึ๋ง#2', isHead: false },
       { name: 'กาย#2', isHead: false },
       { name: 'ปันปัน#4', isHead: false },
       { name: 'เอมมี่#4', isHead: false },
@@ -36,16 +36,22 @@ export const nurseShifts: Shift[] = [
   },
   {
     time: 'เช้า 08:00 - 12:00',
+    location: 'หอประชุม (สถาปัตย์)',
+    leadsAndMembers: [
+      { name: 'ขิม#4', isHead: true },
+      { name: 'จีจี้#2', isHead: false },
+      { name: 'แตงกวา#2', isHead: false },
+      { name: 'โกะ#2', isHead: false },
+    ]
+  },
+  {
+    time: 'เช้า 08:00 - 12:00',
     location: 'หอประชุม (วิศวะ)',
     leadsAndMembers: [
       { name: 'ปิงลี่#3', isHead: true },
-      { name: 'ขิม#4', isHead: true },
       { name: 'บิว#3', isHead: false },
       { name: 'อาร์#2', isHead: false },
       { name: 'หนูนิ#2', isHead: false },
-      { name: 'จี๋#2', isHead: false },
-      { name: 'แตงกวา#2', isHead: false },
-      { name: 'โกะ#2', isHead: false },
     ]
   },
   {
@@ -56,6 +62,7 @@ export const nurseShifts: Shift[] = [
       { name: 'มินท์#2', isHead: false },
       { name: 'ลีโอ#3', isHead: false },
       { name: 'หมีพู#3', isHead: false },
+      { name: 'จีจี#3', isHead: false },
     ]
   },
   {
@@ -63,8 +70,7 @@ export const nurseShifts: Shift[] = [
     location: 'หอประชุม (อักษร)',
     leadsAndMembers: [
       { name: 'ปุญ#4', isHead: true },
-      { name: 'ไช้#3', isHead: false },
-      { name: 'จีจี#3', isHead: false },
+      { name: 'ไข้#3', isHead: false },
       { name: 'ออมสิน#2', isHead: false },
       { name: 'เต้#3', isHead: false },
     ]
@@ -87,6 +93,7 @@ export const nurseShifts: Shift[] = [
       { name: 'จีจี้#2', isHead: false },
       { name: 'เนิร์ส#2', isHead: false },
       { name: 'พราว#2', isHead: false },
+      { name: 'รีพีท#4', isHead: false },
       { name: 'เอม#4', isHead: false },
       { name: 'แนตตี้#4', isHead: false },
     ]
